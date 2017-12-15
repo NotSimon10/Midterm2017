@@ -4,12 +4,14 @@ public class Player {
     
     public static int x;
     public static int y;
+    public static int health;
     public static String name;
     
-    public Player(int a, int b) {
+    public Player(int a, int b, int c) {
         
         x = a;
         y = b;
+        health = c;
         
     }
     
@@ -27,6 +29,9 @@ public class Player {
     }
     public String getName() {
         return name;
+    }
+    public int getHealth() {
+        return health;
     }
     
 }

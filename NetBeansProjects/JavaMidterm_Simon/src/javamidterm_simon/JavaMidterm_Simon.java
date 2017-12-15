@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class JavaMidterm_Simon {
 
-    public static Player player = new Player(5, 5);
+    public static Player player = new Player(5, 5, 3);
     public static Enemy enemy = new Enemy(5,5);
     
     public static Random r = new Random();
@@ -18,6 +18,7 @@ public class JavaMidterm_Simon {
     public static String sca;
 
     public static void main(String[] args) {
+        math();
         System.out.println("Welcome to Simon's game of mystery, there will be\n"
                 + "several games to choose from, including:\n"
                 + "\n[1]: Maze\n"
@@ -201,10 +202,61 @@ public class JavaMidterm_Simon {
             } else {
                 enemy.x -= 1;
             }
+            //9
+        } else if(player.x <= 9 && player.y <= 9 && enemy.x <=9 && enemy.y <= 9) {
+            if(player.x > enemy.x) {
+                enemy.x += 1;
+            } else {
+                enemy.x -= 1;
+            }
+            //10
+        } else if(player.x <= 9 && player.y >=9 && enemy.x <= 9 && enemy.y >= 9) {
+            if(player.x > enemy.x) {
+                enemy.x += 1;
+            } else {
+                enemy.x -= 1;
+            }
+        }
+        int choice;
+        if(player.x == enemy.x && player.y == enemy.y) {
+            System.out.println("You have intersected with an enemy!"
+                             + "\n[1]: Solve a math problem."
+                             + "\n[2]: Lose a life!");
+            choice = sc.nextInt();
+            switch(choice) {
+                case 1:
+                    math();
+                    break;
+                case 2:
+                    player.health--;
+                    if(player.health < 1) {
+                    end();
+                }
+                    break;
+                default:
+                    break;
+            }
         }
         map();
     }
 
+    public static void math() {
+        int a = 1;
+        int b = 1;
+        int c = 1;
+        int d = 1;
+        int e = 1;
+        int f = 1;
+        int g = 1;
+        
+        System.out.println("\nYou have chosen a math problem! It will not be easy!");
+        System.out.println("Solve: (" + a + "/" + b + "+" + c + "x" + "-" + d + "(" + e + "/" + f + "*" + g + ")");
+    }
+    
+    public static void end() {
+        System.out.println("Game over!");
+    }
+    
     public static void blackjack() {
 
     }
